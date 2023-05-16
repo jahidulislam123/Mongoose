@@ -1,9 +1,10 @@
-const express = require('express')
-const mongoose =require("mongoose")
-const app = express()
 
+import mongoose from 'mongoose'
+import app from './app'
+const port :number = 5000
 
-const port = 5000
+//cors take use korteci setake bole ditece 
+
 
 
 
@@ -12,16 +13,12 @@ async function bootstrap() {
   try{
     await mongoose.connect("mongodb://127.0.0.1:27017/Practice_Mongoose")
   console.log("data base connection successfull")
+  app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+  })
   }catch(err){
     console.log("failed to connect databse",err)
   }
 }
 
 bootstrap()
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
