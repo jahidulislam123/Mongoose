@@ -45,7 +45,7 @@ app.get('/', (req : Request, res : Response ,next:NextFunction) => {
             lastName :string;
         }
         dateOfBirt? : string ;
-        gender : "male " | 'female ',
+        gender : "male " | 'female ';
         email ? : string;
         contackNo :string;
         emergencyContackName :string;
@@ -125,10 +125,38 @@ const userSchema = new Schema<IUser>({
     
     
   });
+  //model toiri korlam 
+  const User =model<IUser>('User',userSchema);
 
 
+  const createUserToDB = async ()=>{
 
-  })
+    const user = new User({
+        id:'777',
+        role : "student",
+        password : 'jakanaka',
+        name : {
+            firstName :'jahidul',
+            middleName : 'islam',
+            lastName :'vai'
+        },
+        
+        gender : "male ",
+        email : 'abc@gmail.com',
+        contackNo :'23434534',
+        emergencyContackName :'23454',
+        presentAddress : 'uganda',
+        permanentAdress :'usa',
+  });
+  await user.save();
+
+  }
+
+ createUserToDB();
+ console.log(User)
+
+
+  });
 
 
 
