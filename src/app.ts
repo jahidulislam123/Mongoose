@@ -149,14 +149,13 @@ const userSchema = new Schema<IUser>({
         permanentAdress :'usa',
   });
   await user.save();
-
+  
   }
 
  createUserToDB();
  console.log(User)
 
-
-  });
+ });
 
 
 
