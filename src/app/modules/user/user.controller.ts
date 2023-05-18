@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { createUserToDB, getUserFromDB } from "./user.service";
+import { createUserToDB, getUserFromDB, userGetIdFromDB } from "./user.service";
 
 
 export const createUser =async (
@@ -35,7 +35,20 @@ export const getUser =async (
     }
 
 
-
+    export const getUserById =async (
+        req : Request,
+         res : Response ,
+         next:NextFunction
+         ) => {
+       const {id}=req.params;
+        const user =await userGetIdFromDB(id)
+        res.status(200).json({
+            status : "success",
+            data:user
+        });
+        
+        }
+    
 
 // pattern ta hobe erokom 
 // route call dibe controller ke

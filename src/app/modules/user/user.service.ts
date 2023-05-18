@@ -37,4 +37,7 @@ export const createUserToDB = async (paylos:IUser)
   }
 
 
-
+export const userGetIdFromDB = async(payload:string | null):Promise<IUser |null > =>{
+    const user=await User.findOne({id:payload},{name:1});
+    return user;
+}
